@@ -44,29 +44,32 @@ export class FetchData extends Component {
 
     filterDelayHandle = null;
     handlePropertyNameChange(event) {
-        this.setState({ nameFilter: event.target.value });
+        this.setState({ nameFilter: event.target.value, pageNumber: 1 });
         if (this.filterDelayHandle != null)
             clearTimeout(this.filterDelayHandle);
         const targetValue = event.target.value;
         this.filterDelayHandle = setTimeout(() => this.populatePropertiesData({
             ...this.state,
-            nameFilter: targetValue
+            nameFilter: targetValue,
+            pageNumber: 1
         }), 500);
     }
 
     handleMinOccupancyChange(event) {
-        this.setState({ minOccupancy: event.target.value });
+        this.setState({ minOccupancy: event.target.value, pageNumber: 1 });
         this.populatePropertiesData({
             ...this.state,
-            minOccupancy: event.target.value
+            minOccupancy: event.target.value,
+            pageNumber: 1
         });
     }
 
     handleMaxOccupancyChange(event) {
-        this.setState({ maxOccupancy: event.target.value });
+        this.setState({ maxOccupancy: event.target.value, pageNumber: 1 });
         this.populatePropertiesData({
             ...this.state,
-            maxOccupancy: event.target.value
+            maxOccupancy: event.target.value,
+            pageNumber: 1
         });
     }
 
@@ -78,10 +81,11 @@ export class FetchData extends Component {
         }
         else
             selectedAmenities = this.state.selectedAmenities.filter(selectedAmenity => selectedAmenity != amenity);
-        this.setState({ selectedAmenities: selectedAmenities });
+        this.setState({ selectedAmenities: selectedAmenities, pageNumber: 1 });
         this.populatePropertiesData({
             ...this.state,
-            selectedAmenities: selectedAmenities
+            selectedAmenities: selectedAmenities,
+            pageNumber: 1
         });
     }
 
