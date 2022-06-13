@@ -30,6 +30,7 @@ export class FetchData extends Component {
         this.setState({ loading: true, pageNumber: 1, recordsPerPage: event.target.value });
         this.populatePropertiesData({
             ...this.state,
+            pageNumber: 1,
             recordsPerPage: event.target.value
         });
     }
