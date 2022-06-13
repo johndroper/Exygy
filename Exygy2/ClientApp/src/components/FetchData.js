@@ -176,7 +176,7 @@ export class FetchData extends Component {
     async populatePropertiesData(state) {
       const selectedAmenities = state.selectedAmenities.map(amenity => `&amenities=${encodeURIComponent(amenity)}`).join("");
       const response = await fetch(
-          `https://localhost:44302/ExygyProperties?recordsPerPage=${state.recordsPerPage}&page=${state.pageNumber}&propertyName=${encodeURIComponent(state.nameFilter)}&minOccupancy=${state.minOccupancy}&maxOccupancy=${state.maxOccupancy}${selectedAmenities}`,
+          `/ExygyProperties?recordsPerPage=${state.recordsPerPage}&page=${state.pageNumber}&propertyName=${encodeURIComponent(state.nameFilter)}&minOccupancy=${state.minOccupancy}&maxOccupancy=${state.maxOccupancy}${selectedAmenities}`,
           {
               method: 'GET'
           }

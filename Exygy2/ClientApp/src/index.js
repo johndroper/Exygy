@@ -14,5 +14,16 @@ ReactDOM.render(
   </BrowserRouter>,
   rootElement);
 
-registerServiceWorker();
+if (window.location.href.includes('index'))
+    registerServiceWorker();
+else
+    unregisterAndReload();
+
+function unregisterAndReload() {
+    navigator.serviceWorker.ready.then(registration => {
+        registration.unregister().then(() => {
+            window.location.reload();
+        });
+    });
+}
 
